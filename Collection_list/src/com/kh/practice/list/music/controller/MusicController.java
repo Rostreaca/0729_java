@@ -7,7 +7,7 @@ import com.kh.practice.list.music.model.vo.Music;
 
 public class MusicController {
 
-	private List list = new ArrayList();
+	private List<Music> list = new ArrayList();
 
 	public int addList(Music music) {
 
@@ -17,8 +17,8 @@ public class MusicController {
 		}
 
 		for (int i = 0; i < list.size(); i++) {
-			Music m = (Music) list.get(i);
-			if (m.getTitle().equals(music.getTitle()) || list.get(i).equals(music)) {
+			Music m = list.get(i);
+			if (m.getTitle().equals(music.getTitle()) || m.equals(music)) {
 				return 0;
 			}
 		}
@@ -35,8 +35,8 @@ public class MusicController {
 		}
 
 		for (int i = 0; i < list.size(); i++) {
-			Music m = (Music) list.get(i);
-			if (m.getTitle().equals(music.getTitle()) || list.get(i).equals(music)) {
+			Music m = list.get(i);
+			if (m.getTitle().equals(music.getTitle()) || m.equals(music)) {
 				return 0;
 			}
 		}
@@ -46,7 +46,8 @@ public class MusicController {
 	}
 
 	public List printAll() {
-
+		
+		
 		return list;
 
 	}
@@ -54,7 +55,7 @@ public class MusicController {
 	public Music searchMusic(String title) {
 
 		for (int i = 0; i < list.size(); i++) {
-			Music music = (Music) list.get(i);
+			Music music = list.get(i);
 			if (music.getTitle().equals(title)) {
 				return music;
 			}
@@ -66,7 +67,7 @@ public class MusicController {
 	public Music removeMusic(String title) {
 
 		for (int i = 0; i < list.size(); i++) {
-			Music remove = (Music) list.get(i);
+			Music remove = list.get(i);
 			if (remove.getTitle().equals(title)) {
 				list.remove(i);
 				return remove;
@@ -80,8 +81,8 @@ public class MusicController {
 	public Music setMusic(String title, Music music) {
 
 		for (int i = 0; i < list.size(); i++) {
-			Music m = (Music) list.get(i);
-			if (m.getTitle().equals(music.getTitle())&&m.getSinger().equals(music.getSinger())) {
+			Music m = list.get(i);
+			if (m.getTitle().equals(music.getTitle()) && m.getSinger().equals(music.getSinger())) {
 				m.setTitle(title);
 				return m;
 			}
@@ -90,10 +91,8 @@ public class MusicController {
 		return null;
 	}
 
-	
-	
 	public int ascTitle() {
-		
+
 		return 1;
 	}
 

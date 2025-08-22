@@ -24,8 +24,15 @@ public class BookMenu {
 			System.out.println("5. 도서 명 오름차순 정렬");
 			System.out.println("9. 종료");
 			System.out.print("메뉴번호 선택 : ");
-			int menuNo = sc.nextInt();
-			sc.nextLine();
+			int menuNo = 0;
+			try {
+				menuNo = sc.nextInt();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sc.nextLine();
+			}
+
 			switch (menuNo) {
 			case 1:
 				insertBook();
@@ -79,7 +86,7 @@ public class BookMenu {
 			return;
 		}
 		System.out.print("가격을 입력해주세요 > ");
-		
+
 		int price = 0;
 		try {
 			price = sc.nextInt();
@@ -88,20 +95,20 @@ public class BookMenu {
 			e.printStackTrace();
 			sc.nextLine();
 		}
-		
+
 		Book b = new Book(title, author, category, price);
 		bc.insertBook(b);
-		
+
 		System.out.println("도서가 추가되었습니다.");
 	}
 
 	public void selectList() {
 		ArrayList<Book> bookList = bc.selectList();
-		
-		if(bookList.isEmpty()) {
+
+		if (bookList.isEmpty()) {
 			System.out.println("존재하는 도서가 없습니다.");
 		} else {
-			for(Book b : bookList) {
+			for (Book b : bookList) {
 				System.out.println(b);
 			}
 		}
@@ -111,15 +118,15 @@ public class BookMenu {
 		System.out.print("검색할 도서명의 키워드를 입력해주세요 > ");
 		String keyword = sc.nextLine();
 		ArrayList<Book> searchList = bc.searchBook(keyword);
-		
-		if(searchList.isEmpty()) {
+
+		if (searchList.isEmpty()) {
 			System.out.println("검색 결과가 없습니다.");
 		} else {
-			for(Book b : searchList) {
+			for (Book b : searchList) {
 				System.out.println(b);
 			}
 		}
-		
+
 	}
 
 	public void deleteBook() {
@@ -127,24 +134,24 @@ public class BookMenu {
 		String title = sc.nextLine();
 		System.out.print("삭제할 도서의 저자명을 입력해주세요 > ");
 		String author = sc.nextLine();
-		
+
 		Book remove = bc.deleteBook(title, author);
-		
-		if(remove != null) {
+
+		if (remove != null) {
 			System.out.println("성공적으로 삭제되었습니다.");
 		} else {
 			System.out.println("삭제할 도서를 찾지 못했습니다.");
 		}
-		
+
 	}
 
 	public void ascBook() {
-		
+
 		int result = bc.ascBook();
-		
-		if(result == 0) {
+
+		if (result == 0) {
 			System.out.println("정렬에 실패하였습니다.");
-		} else {			
+		} else {
 			System.out.println("정렬이 완료되었습니다.");
 		}
 	}

@@ -67,11 +67,7 @@ public class Book {
 		
 		Book b = (Book)o;
 		
-		if(b.getTitle().charAt(0)>this.getTitle().charAt(0)) {
-			return 1;
-		}
-		
-		return 0;
+		return this.getTitle().charAt(0)-b.getTitle().charAt(0);
 	}
 	
 	
