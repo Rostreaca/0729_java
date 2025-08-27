@@ -189,3 +189,12 @@ public class Run {
 	
 	
 }
+
+// 추가 =
+//FINAL class => 상속 안됨 X
+
+//FINAL METHOD => 오버라이딩 안됨 XX
+
+
+
+
